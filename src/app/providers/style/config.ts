@@ -1,10 +1,11 @@
+
 import { plusJakartaFont } from "@/app/layout";
 import { createTheme } from "@mui/material";
 import { AppRouterCacheProviderProps } from "@mui/material-nextjs/v16-appRouter";
 
 export const styleConfig = createTheme({
   typography: {
-    fontFamily: `var(${plusJakartaFont.variable})`,
+    fontFamily: `var(--font-plus-jakarta)`,
     h1: {
       fontWeight: 700,
     },

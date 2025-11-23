@@ -1,0 +1,28 @@
+.wrapper {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 80px 1fr;
+  grid-template-rows: 80px 1fr;
+  grid-template-areas: 
+    "sidebar header"
+    "sidebar content"
+  ;
+
+  .header {
+    grid-area: header;
+  }
+  .sidebar {
+    grid-area: sidebar;
+  }
+  .content {
+    grid-area: content;
+  }
+}
+
+.wrapper.no_sidebar {
+  grid-template-columns: 1fr;
+  grid-template-areas: 
+    "header"
+    "content"
+  ;
+}
