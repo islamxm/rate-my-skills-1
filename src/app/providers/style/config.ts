@@ -88,6 +88,8 @@ export const styleConfig = createTheme({
       styleOverrides: {
         root: {
           color: "#4F46E5",
+          textDecoration: "none",
+          transition: "all .2s ease"
         },
       },
     },
