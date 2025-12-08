@@ -1,5 +1,3 @@
-
-import { plusJakartaFont } from "@/app/layout";
 import { createTheme } from "@mui/material";
 import { AppRouterCacheProviderProps } from "@mui/material-nextjs/v16-appRouter";
 
@@ -88,6 +86,8 @@ export const styleConfig = createTheme({
       styleOverrides: {
         root: {
           color: "#4F46E5",
+          textDecoration: "none",
+          transition: "all .2s ease"
         },
       },
     },

@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren, ReactNode } from "react";
 import classes from "./classes.module.scss";
-import { type Mods, cn } from "../../lib";
+import { cn, type Mods } from "@/src/shared/lib";
 
 type Props = PropsWithChildren<{
   header?: ReactNode;
