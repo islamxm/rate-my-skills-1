@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { StoreProvider } from "@/src/app/providers/store";
 import { StyleProvider } from "@/src/app/providers/style";
-import { PageLayout } from "@/src/shared/ui/PageLayout";
+import { PageLayout } from "@/src/widgets/pageLayout";
 import "@/src/app/style/main.scss";
 import { AppHeader } from "@/src/widgets/appHeader";
 

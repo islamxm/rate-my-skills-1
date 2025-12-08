@@ -1,16 +1,27 @@
-import { HeaderNavigation } from "@/src/features/navigation"
-import { SearchField } from "@/src/features/search"
-import { Stack } from "@mui/material"
+import { HeaderNavigation } from "@/src/features/navigation";
+import { SearchField } from "@/src/features/search";
+import { Box, Stack } from "@mui/material";
+import { Container } from "@/src/widgets/container";
 
 export const AppHeader = () => {
   return (
-    <header>
-      <Stack sx={{minHeight: "80px", p: "1.6rem 3rem"}} gap={"10px"} direction={"row"} alignItems={"center"}>
-        <HeaderNavigation/>
-        <Stack gap={"10px"}>
-          <SearchField/>
+    <Box component={"header"}>
+      <Container>
+        <Stack
+          sx={{
+            height: "80px",
+          }}
+          gap={"10px"}
+          direction={"row"}
+          alignItems={"center"}
+          justifyContent={"space-between"}
+        >
+          <HeaderNavigation />
+          <Stack gap={"10px"}>
+            <SearchField />
+          </Stack>
         </Stack>
-      </Stack>
-    </header>
-  )
-}
+      </Container>
+    </Box>
+  );
+};

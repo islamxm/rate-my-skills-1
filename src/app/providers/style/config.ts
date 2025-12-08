@@ -1,5 +1,3 @@
-
-import { plusJakartaFont } from "@/app/layout";
 import { createTheme } from "@mui/material";
 import { AppRouterCacheProviderProps } from "@mui/material-nextjs/v16-appRouter";
 

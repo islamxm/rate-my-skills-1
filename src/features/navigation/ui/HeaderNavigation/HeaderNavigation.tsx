@@ -1,25 +1,21 @@
-"use client"
-import { Stack, Link as MuiLink } from "@mui/material"
-import Link from "next/link"
-
-const data = ["Home", "Movies", "Series", "Trending", "About"]
-
+"use client";
+import { Stack } from "@mui/material";
+import { routes } from "@/src/shared/routes";
+import { NavLink } from "../NavLink/NavLink";
+import { usePathname } from "next/navigation";
 
 export const HeaderNavigation = () => {
+  const pathname = usePathname();
 
   return (
     <Stack direction={"row"} gap={"30px"}>
-      {
-        data.map(l => (
-          <MuiLink sx={theme => ({
-            color: theme.palette.text.secondary,
-            fontWeight: 600,
-            "&:hover": {
-              color: theme.palette.text.primary
-            }
-          })} key={l} component={Link} href={'#'}>{l}</MuiLink>
-        ))
-      }
+      {routes.map((route) => (
+        <NavLink
+          {...route}
+          isActive={pathname.startsWith(route.path)}
+          key={route.id}
+        />
+      ))}
     </Stack>
-  )
-}
+  );
+};
