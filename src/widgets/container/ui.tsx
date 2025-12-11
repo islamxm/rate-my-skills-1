@@ -17,8 +17,10 @@ export const Container:FC<Props> = ({
     <Box
       sx={{
         maxWidth: !fullWidth ? "146rem" : "unset",
+        width: "100%",
         px: "1rem",
         margin: "0 auto",
+        overflowX:"hidden",
         ...sx
       }}
       component={compoenent}

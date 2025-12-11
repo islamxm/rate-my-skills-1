@@ -17,3 +17,5 @@ export type CustomizableMuiComponent<T extends object = object> = PropsWithClass
   sx?: SxProps;
   compoenent?: ElementType;
 } & T>
+
+export const REM = 10;
