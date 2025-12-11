@@ -6,15 +6,19 @@ export const styleConfig = createTheme({
     fontFamily: `var(--font-plus-jakarta)`,
     h1: {
       fontWeight: 700,
+      fontSize: "3.2rem"
     },
     h2: {
       fontWeight: 700,
+      fontSize: "2.4rem"
     },
     h3: {
       fontWeight: 700,
+      fontSize: "1.6rem"
     },
     h4: {
       fontWeight: 700,
+      fontSize: "1.4rem"
     },
     h5: {
       fontWeight: 700,
@@ -30,6 +34,9 @@ export const styleConfig = createTheme({
       fontSize: "1.4rem",
       lineHeight: "160%",
     },
+  },
+  shape: {
+    borderRadius: "2rem"
   },
   palette: {
     text: {
@@ -56,6 +63,11 @@ export const styleConfig = createTheme({
     },
   },
   components: {
+    MuiButtonBase: {
+      defaultProps: {
+        disableRipple: true
+      }
+    },
     MuiButton: {
       styleOverrides: {
         root: {
