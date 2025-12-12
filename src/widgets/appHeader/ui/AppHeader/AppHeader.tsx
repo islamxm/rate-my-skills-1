@@ -5,7 +5,7 @@ import { Container } from "@/src/widgets/container";
 
 export const AppHeader = () => {
   return (
-    <Box component={"header"}>
+    <Box component={"header"} sx={{position: "fixed", zIndex: 2, backdropFilter: "blur(10px)", width: "100%"}}>
       <Container>
         <Stack
           sx={{
