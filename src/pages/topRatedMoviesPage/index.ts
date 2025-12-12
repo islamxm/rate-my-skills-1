@@ -1,0 +1,1 @@
+export { TopRatedMoviesPage } from "./ui/TopRatedMoviesPage/TopRatedMoviesPage";
