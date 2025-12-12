@@ -11,6 +11,8 @@ import dayjs from "dayjs";
 import { GenresList } from "../GenresList/GenresList";
 import { ReleaseYear } from "../ReleaseYear/ReleaseYear";
 import { MovieTitle } from "../MovieTitle/MovieTitle";
+import Link from "next/link";
+import { getMovieDetailsPage } from "../../routes";
 
 type Props = Movie & {
   width?: string;
@@ -28,6 +30,7 @@ export const MovieCard: FC<Props> = ({
   release_date,
   width = "25rem",
   imageType,
+  id,
 }) => {
   const [hover, setHover] = useState(false);
 
@@ -43,69 +46,79 @@ export const MovieCard: FC<Props> = ({
   };
 
   return (
-    <Paper
-      sx={(theme) => ({
+    <Box
+      component={Link}
+      href={getMovieDetailsPage(id)}
+      sx={{
+        display: "block",
         height: "36rem",
         maxWidth: width,
         width: "100%",
         flex: "0 0 auto",
-        overflow: "hidden",
-        position: "relative",
-        scrollSnapAlign: "start",
-      })}
-      component={motion.div}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      onMouseOver={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
+      }}
     >
-      <Box
+      <Paper
+        sx={(theme) => ({
+          overflow: "hidden",
+          position: "relative",
+          scrollSnapAlign: "start",
+          width: "100%",
+          height: "100%"
+        })}
         component={motion.div}
-        animate={{
-          scale: hover ? 1.2 : 1,
-          transition: { type: "tween", duration: 0.4 },
-        }}
-        sx={{ width: "100%", height: "100%" }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        onMouseOver={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
       >
-        <Image
-          src={`${IMAGES_BASE_URL}/w500${imgSrc()}`}
-          alt=""
-          width={282}
-          height={360}
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          // style={{ objectFit: "cover" }}
-        />
-      </Box>
-      <AnimatePresence>
-        {hover && (
-          <Stack
-            sx={{
-              // background:"linear-gradient(0deg,rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0) 100%)",
-              p: "2rem",
-              backdropFilter: "blur(.5rem)",
-              background: "rgba(0,0,0, .7)",
-              height: "100%",
-              width: "100%",
-              position: "absolute",
-              bottom: 0,
-              left: 0,
-              justifyContent: "flex-end",
-              alignItems: "flex-start",
-            }}
-            component={motion.div}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            gap={".5rem"}
-          >
-            <RatingBadge value={vote_average} />
-            {/* {adult && <AdultBadge />} */}
-            <GenresList genres={genre_ids} />
-            <ReleaseYear value={release_date} />
-            <MovieTitle value={title} />
-          </Stack>
-        )}
-      </AnimatePresence>
-    </Paper>
+        <Box
+          component={motion.div}
+          animate={{
+            scale: hover ? 1.2 : 1,
+            transition: { type: "tween", duration: 0.4 },
+          }}
+          sx={{ width: "100%", height: "100%" }}
+        >
+          <Image
+            src={`${IMAGES_BASE_URL}/w500${imgSrc()}`}
+            alt=""
+            width={282}
+            height={360}
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            // style={{ objectFit: "cover" }}
+          />
+        </Box>
+        <AnimatePresence>
+          {hover && (
+            <Stack
+              sx={{
+                // background:"linear-gradient(0deg,rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0) 100%)",
+                p: "2rem",
+                backdropFilter: "blur(.5rem)",
+                background: "rgba(0,0,0, .7)",
+                height: "100%",
+                width: "100%",
+                position: "absolute",
+                bottom: 0,
+                left: 0,
+                justifyContent: "flex-end",
+                alignItems: "flex-start",
+              }}
+              component={motion.div}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              gap={".5rem"}
+            >
+              <RatingBadge value={vote_average} />
+              {/* {adult && <AdultBadge />} */}
+              <GenresList genres={genre_ids} />
+              <ReleaseYear value={release_date} />
+              <MovieTitle value={title} />
+            </Stack>
+          )}
+        </AnimatePresence>
+      </Paper>
+    </Box>
   );
 };

@@ -6,24 +6,28 @@ import { RxChevronLeft, RxChevronRight } from "react-icons/rx";
 
 type Props = PropsWithChildren<{
   itemWidth: number;
+  showNavigation?: boolean;
+  gap?: number;
 }>;
 
 const navButtonSx: SxProps = {
-    position: "absolute",
-    height: "100%",
-    minWidth: "unset",
-    p: 0,
-    width: "4rem",
-    top: 0,
-    zIndex: 2,
-    background: "rgba(79,70,229, .4)",
-    backdropFilter: "blur(10px)",
-    fontSize: "5rem",
-  };
+  position: "absolute",
+  height: "100%",
+  minWidth: "unset",
+  p: 0,
+  width: "4rem",
+  top: 0,
+  zIndex: 2,
+  background: "rgba(79,70,229, .4)",
+  backdropFilter: "blur(10px)",
+  fontSize: "5rem",
+};
 
 export const ScrollableHorizontalList: FC<Props> = ({
   children,
   itemWidth,
+  showNavigation = true,
+  gap = 10
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -32,7 +36,7 @@ export const ScrollableHorizontalList: FC<Props> = ({
 
   const prev = () => {
     if (sliderRef.current) {
-      const leftOffset = sliderRef.current.scrollLeft - itemWidth * 10;
+      const leftOffset = sliderRef.current.scrollLeft - (itemWidth + gap);
       sliderRef.current.scrollTo({
         left: leftOffset,
         behavior: "smooth",
@@ -41,7 +45,7 @@ export const ScrollableHorizontalList: FC<Props> = ({
   };
   const next = () => {
     if (sliderRef.current) {
-      const leftOffset = sliderRef.current.scrollLeft + itemWidth * 10;
+      const leftOffset = sliderRef.current.scrollLeft + (itemWidth + gap);
       sliderRef.current.scrollTo({
         left: leftOffset,
         behavior: "smooth",
@@ -68,9 +72,9 @@ export const ScrollableHorizontalList: FC<Props> = ({
   };
 
   return (
-    <Box ref={containerRef} sx={{ position: "relative" }}>
+    <Box ref={containerRef} sx={{ position: "relative", minWidth: 0 }}>
       <AnimatePresence>
-        {canSlidePrev && (
+        {canSlidePrev && showNavigation && (
           <Button
             variant={"contained"}
             sx={{
@@ -95,8 +99,8 @@ export const ScrollableHorizontalList: FC<Props> = ({
           overflowY: "visible",
           scrollbarWidth: "none",
           scrollSnapType: "x mandatory",
-          scrollMarginInlineStart: "2rem",
-          gap: "1rem",
+          scrollMarginInlineStart: gap + "px",
+          gap: gap + "px",
         }}
         component={"div"}
         ref={sliderRef}
@@ -104,7 +108,7 @@ export const ScrollableHorizontalList: FC<Props> = ({
         {children}
       </Stack>
       <AnimatePresence>
-        {canSlideNext && (
+        {canSlideNext && showNavigation && (
           <Button
             variant={"contained"}
             sx={{

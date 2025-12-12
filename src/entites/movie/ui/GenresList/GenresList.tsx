@@ -1,3 +1,4 @@
+"use client"
 import { FC } from "react";
 import { GenreBadge } from "../GenreBadge/GenreBadge";
 import { Stack } from "@mui/material";

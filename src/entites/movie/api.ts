@@ -1,5 +1,6 @@
 import { api } from "@/src/shared/api";
 import {
+  MovieDetailsSchema,
   ResponseGetMovieGenresListSchema
 } from "./contracts";
 import { objectToSearchParams } from "@/src/shared/lib";
@@ -96,6 +97,19 @@ export const movieApi = api.injectEndpoints({
           console.log("INVALID API DATA", err)
         }
       }
-    })
+    }),
+    getMovieById: builder.query({
+      query: (id: number) => ({
+        url: `movie/${id}`
+      }),
+      transformResponse: (res) => {
+        try {
+          return MovieDetailsSchema.parse(res)
+        } catch(err) {
+          console.log("INVALID API DATA", err)
+        }
+      }
+    }),
+    
   }),
 });

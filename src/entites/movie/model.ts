@@ -5,7 +5,9 @@ import {
   ResponseGetPopularMoviesListSchema,
   ResponseGetTopRatedMoviesListSchema,
   ResponseGetUpcomingMoviesListSchema,
-  ResponseGetMovieGenresListSchema
+  ResponseGetMovieGenresListSchema,
+  MovieDetailsSchema,
+  ProductionCompanySchema
 } from "./contracts";
 
 export type MovieDto = z.infer<typeof MovieSchema>;
@@ -22,3 +24,9 @@ export type API_GetMoviesListInput = {
   page?: number;
   region?: string;
 };
+
+export type MovieDetailsDto = z.infer<typeof MovieDetailsSchema>;
+export type MovieDetails = MovieDetailsDto;
+
+export type ProductionCompanyDto = z.infer<typeof ProductionCompanySchema>;
+export type ProductionCompany = ProductionCompanyDto;
