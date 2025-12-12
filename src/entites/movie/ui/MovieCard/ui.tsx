@@ -12,7 +12,10 @@ import { GenresList } from "../GenresList/GenresList";
 import { ReleaseYear } from "../ReleaseYear/ReleaseYear";
 import { MovieTitle } from "../MovieTitle/MovieTitle";
 
-type Props = Movie & {};
+type Props = Movie & {
+  width?: string;
+  imageType?: "backdrop" | "poster";
+};
 
 export const MovieCard: FC<Props> = ({
   title,
@@ -23,14 +26,27 @@ export const MovieCard: FC<Props> = ({
   adult,
   genre_ids,
   release_date,
+  width = "25rem",
+  imageType,
 }) => {
   const [hover, setHover] = useState(false);
+
+  const imgSrc = () => {
+    switch (imageType) {
+      case "backdrop":
+        return backdrop_path;
+      case "poster":
+        return poster_path;
+      default:
+        return poster_path;
+    }
+  };
 
   return (
     <Paper
       sx={(theme) => ({
         height: "36rem",
-        maxWidth: "25rem",
+        maxWidth: width,
         width: "100%",
         flex: "0 0 auto",
         overflow: "hidden",
@@ -52,11 +68,12 @@ export const MovieCard: FC<Props> = ({
         sx={{ width: "100%", height: "100%" }}
       >
         <Image
-          src={`${IMAGES_BASE_URL}/w500${poster_path}`}
+          src={`${IMAGES_BASE_URL}/w500${imgSrc()}`}
           alt=""
           width={282}
           height={360}
           style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          // style={{ objectFit: "cover" }}
         />
       </Box>
       <AnimatePresence>
@@ -83,9 +100,9 @@ export const MovieCard: FC<Props> = ({
           >
             <RatingBadge value={vote_average} />
             {/* {adult && <AdultBadge />} */}
-            <GenresList genres={genre_ids}/>
-            <ReleaseYear value={release_date}/>
-            <MovieTitle value={title}/>
+            <GenresList genres={genre_ids} />
+            <ReleaseYear value={release_date} />
+            <MovieTitle value={title} />
           </Stack>
         )}
       </AnimatePresence>

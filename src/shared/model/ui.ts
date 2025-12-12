@@ -8,9 +8,10 @@ export type PropsWithClassName<T extends object = object> = {
 export type UIStatus = "idle" | "loading" | "success" | "error";
 
 export type UIStatusFlags = {
-  isLoading: boolean;
-  isSuccess: boolean;
-  isError: boolean;
+  isLoading?: boolean;
+  isSuccess?: boolean;
+  isError?: boolean;
+  isFetching?: boolean;
 }
 
 export type CustomizableMuiComponent<T extends object = object> = PropsWithClassName<{

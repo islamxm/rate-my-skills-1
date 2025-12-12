@@ -1,0 +1,1 @@
+export { PopularMoviesPage } from "./ui/PopularMoviesPage/PopularMoviesPage";

@@ -91,7 +91,7 @@ export const ScrollableHorizontalList: FC<Props> = ({
         onScrollEnd={onScrollEnd}
         direction={"row"}
         sx={{
-          overflowX: "scroll",
+          overflowX: "auto",
           overflowY: "visible",
           scrollbarWidth: "none",
           scrollSnapType: "x mandatory",

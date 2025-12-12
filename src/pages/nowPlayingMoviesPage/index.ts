@@ -1,0 +1,1 @@
+export { NowPlayingMoviesPage } from "./ui/NowPlayingMoviesPage/NowPlayingMoviesPage";
