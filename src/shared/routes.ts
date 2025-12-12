@@ -20,11 +20,11 @@ export const routesMap: Record<string, Route> = {
     path: getMoviesPage(),
     label: "Movies",
   },
-  series: {
-    id: 3,
-    path: getSeriesPage(),
-    label: "Series",
-  },
+  // series: {
+  //   id: 3,
+  //   path: getSeriesPage(),
+  //   label: "Series",
+  // },
   about: {
     id: 4,
     path: getAboutPage(),

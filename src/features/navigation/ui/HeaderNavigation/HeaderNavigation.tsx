@@ -12,7 +12,7 @@ export const HeaderNavigation = () => {
       {routes.map((route) => (
         <NavLink
           {...route}
-          isActive={pathname.startsWith(route.path)}
+          isActive={Boolean(pathname?.startsWith(route.path))}
           key={route.id}
         />
       ))}
