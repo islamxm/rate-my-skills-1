@@ -1,4 +1,4 @@
-import { Chip } from "@mui/material"
+import { alpha, Chip, hexToRgb } from "@mui/material"
 import { FC } from "react"
 
 type Props = {
@@ -11,17 +11,17 @@ export const GenreBadge:FC<Props> = ({
   return (
     <Chip
       sx={theme => ({
-        color: theme.palette.common.black,
-        backgroundColor: theme.palette.text.disabled,
+        color: theme.palette.common.white,
+        backgroundColor: alpha(theme.palette.grey[400], .1),
         borderColor: theme.palette.text.disabled,
-        backdropFilter: "blur(10px)",
-        fontWeight: 700,
+        backdropFilter: "blur(1.5rem)",
+        fontWeight: 600,
         borderRadius: "1rem",
         fontSize: "1.2rem"
       })}
-      variant={"filled"}
+      variant={"outlined"}
       label={value}
-      size={"small"}
+      // size={"small"}
       />
   )
 }

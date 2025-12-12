@@ -2,7 +2,7 @@
 import { Movie, movieApi, MovieCard } from "@/src/entites/movie";
 import { Container } from "@/src/widgets/container";
 import { InfiniteList } from "@/src/widgets/infiniteList/ui/InfiniteList/InfiniteList";
-import { ScrollableHorizontalList } from "@/src/widgets/scrollableHorizontalList";
+import { ScrollableHorizontalList } from "@/src/shared/ui";
 import { Box, Stack, Typography } from "@mui/material";
 import { FC } from "react";
 

@@ -3,7 +3,7 @@ import { Container } from "@/src/widgets/container";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import Link from "next/link";
 import { FC } from "react";
-import { ScrollableHorizontalList } from "@/src/widgets/scrollableHorizontalList";
+import { ScrollableHorizontalList } from "@/src/shared/ui";
 
 type Props = {
   title: string;
